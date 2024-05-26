@@ -11,7 +11,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.tasks.index');
     }
 
     /**
@@ -19,7 +19,8 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.tasks.create');
+
     }
 
     /**

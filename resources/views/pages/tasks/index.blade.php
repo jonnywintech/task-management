@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-dark-800 bold leading-tight">
-            {{ __('Projects and correspnding users') }}
+            {{ __('Task and correspnding User And Project') }}
         </h2>
     </x-slot>
     <div class="container mx-auto px-4">
         <div class="p-8 ps-0">
-            <a href="{{route('projects.create')}}"
+            <a href="{{route('tasks.create')}}"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Create
-                New Project</a>
+                New Task</a>
         </div>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
