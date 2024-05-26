@@ -1,15 +1,8 @@
 @extends('template.index')
 
-@section('navbar')
-    @include('partials.header')
-@endsection
-
 @section('content')
 
-
+<div class="h-lvh bg-zinc-200"></div>
 
 @endsection()
 
-@section('footer')
-    @include('partials.footer')
-@endsection
