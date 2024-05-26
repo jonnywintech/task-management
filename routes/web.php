@@ -1,25 +1,40 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskAssignmentController;
 
 Route::get('/', function () {
-    return view('home');
+    return view('pages.home.index');
 });
 
-Route::middleware(['auth', 'verified'])->group(function(){
-    Route::get('/dashboard', function (){
-        return view('dashboard');
-    })->name('dashboard');
-    Route::get('/projects', function (){
-        return view('dashboard');
-    })->name('projects');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+
+
+
+    Route::resource('tasks', TaskController::class);
+    Route::resource('task-assignments', TaskAssignmentController::class);
+
+    Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('projects/{id}', [ProjectController::class, 'view'])->name('projects.view');
+    Route::get('projects/create', [ProjectController::class, 'create'])->name('projects.create');
+    Route::post('projects/store', [ProjectController::class, 'store'])->name('projects.store');
+    Route::get('projects/{id}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
+    Route::get('projects/{id}/update', [ProjectController::class, 'edit'])->name('projects.update');
+    Route::delete('projects/{id}/delete', [ProjectController::class, 'delete'])->name('projects.delete');
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('dashboard', function () {
+        return view('pages.dashboard');
+    })->name('dashboard');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

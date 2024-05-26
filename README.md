@@ -7,12 +7,12 @@ live link: https://task-managment.evolvadigital.com
 - Docker
 
 
-#### Local development
+## Local development
 
 ### System configuration and requirements
 
 #### PHP 8.3+
-    extension:
+    Extension:
     - curl
     - exif
     - fileinfo
@@ -28,7 +28,7 @@ live link: https://task-managment.evolvadigital.com
 
 #### Composer version 2.4.1 or newer
 
-#### Nodejs version 18.
+#### Nodejs version 18
 
 ### Commands
 

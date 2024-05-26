@@ -81,7 +81,7 @@
         <hr class="mt-16 mb-10 border-gray-800" />
 
         <div class="flex flex-wrap items-center justify-between">
-            <img class="h-8 auto md:order-1" src="https://cdn.rareblocks.xyz/collection/celebration/images/logo-alt.svg" alt="" />
+            <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
 
             <ul class="flex items-center space-x-3 md:order-3">
                 <li>
@@ -127,7 +127,7 @@
                 </li>
             </ul>
 
-            <p class="w-full mt-8 text-sm text-center text-gray-100 md:mt-0 md:w-auto md:order-2">© Copyright 2021, All Rights Reserved by Postcraft</p>
+            <p class="w-full mt-8 text-sm text-center text-gray-100 md:mt-0 md:w-auto md:order-2">© Copyright {{date('Y')}}</p>
         </div>
     </div>
 </section>
