@@ -26,8 +26,41 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-span-full">
-                            <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Upload Photos</label>
+                            <div class="w-56">
+                                <label for="countries"
+                                class="block mb-2 text-sm font-medium text-gray-900">Select an
+                                option</label>
+                            <select id="countries"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                <option selected>Select Project</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="FR">France</option>
+                                <option value="DE">Germany</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-span-full">
+                            <div class="w-56">
+                                <label for="countries"
+                                class="block mb-2 text-sm font-medium text-gray-900">Select an
+                                option</label>
+                            <select id="countries"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                <option selected>Choose a Task Priority</option>
+                                <option value="normal">Normal</option>
+                                <option value="medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Upload
+                                Photos</label>
                             <div
                                 class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                                 <div class="text-center">
@@ -41,7 +74,8 @@
                                         <label for="file-upload"
                                             class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                                             <span>Upload a file</span>
-                                            <input id="file-upload" name="file-upload[]" type="file" class="sr-only" multiple>
+                                            <input id="file-upload" name="file-upload[]" type="file" class="sr-only"
+                                                multiple>
                                         </label>
                                         <p class="pl-1">or drag and drop</p>
                                     </div>
@@ -56,7 +90,7 @@
                                 <textarea id="about" name="about" rows="3"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
                             </div>
-                            <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about project.</p>
+                            <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about task.</p>
                         </div>
 
 
