@@ -17,52 +17,47 @@
                         <div class="sm:col-span-4">
                             <label for="project_name"
                                 class="block text-sm font-medium leading-6 text-gray-900">Name</label>
-                            <div class="mt-2">
-                                <div
-                                    class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                    <input type="text" name="project_name" id="project_name"
-                                        class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 ps-2 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 placeholder:ps-1"
-                                        placeholder="test_project">
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-span-full">
-                            <div class="w-56">
-                                <label for="countries"
-                                class="block mb-2 text-sm font-medium text-gray-900">Select an
-                                option</label>
-                            <select id="countries"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                <option selected>Select Project</option>
-                                <option value="US">United States</option>
-                                <option value="CA">Canada</option>
-                                <option value="FR">France</option>
-                                <option value="DE">Germany</option>
-                            </select>
+                            <div
+                                class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 sm:max-w-md">
+                                <input type="text" name="task_name" id="task_name"
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    placeholder="test_task">
                             </div>
                         </div>
                         <div class="col-span-full">
                             <div class="w-56">
-                                <label for="countries"
-                                class="block mb-2 text-sm font-medium text-gray-900">Select an
-                                option</label>
-                            <select id="countries"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                <option selected>Choose a Task Priority</option>
-                                <option value="normal">Normal</option>
-                                <option value="medium">Medium</option>
-                                <option value="High">High</option>
-                            </select>
+                                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">Select an
+                                    option</label>
+                                <select id="countries"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                    <option selected>Select Project</option>
+                                    <option value="US">United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="FR">France</option>
+                                    <option value="DE">Germany</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-span-full">
+                            <div class="w-56">
+                                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">Select an
+                                    option</label>
+                                <select id="countries"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                    <option selected>Choose a Task Priority</option>
+                                    <option value="normal">Normal</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="High">High</option>
+                                </select>
                             </div>
                         </div>
 
-                        <div class="col-span-full">
+                        <div class="col-span-full" x-data="dragAndDrop()" @drop="handleDrop"
+                            @dragover="handleDragOver">
                             <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Upload
                                 Photos</label>
-                            <div
-                                class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                            <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+                                @drop.prevent="handleDrop" @dragover.prevent="handleDragOver">
                                 <div class="text-center">
                                     <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
                                         aria-hidden="true">
@@ -75,7 +70,7 @@
                                             class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                                             <span>Upload a file</span>
                                             <input id="file-upload" name="file-upload[]" type="file" class="sr-only"
-                                                multiple>
+                                                multiple @change="handleFiles">
                                         </label>
                                         <p class="pl-1">or drag and drop</p>
                                     </div>
@@ -83,6 +78,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-span-full">
                             <label for="about"
                                 class="block text-sm font-medium leading-6 text-gray-900">Description</label>
@@ -108,4 +105,26 @@
 
 
     </div>
+    <script>
+        function dragAndDrop() {
+            return {
+                handleDragOver(event) {
+                    event.preventDefault();
+                },
+                handleDrop(event) {
+                    event.preventDefault();
+                    const files = event.dataTransfer.files;
+                    this.handleFiles({
+                        target: {
+                            files
+                        }
+                    });
+                },
+                handleFiles(event) {
+                    const files = event.target.files;
+                    console.log('Files:', files);
+                }
+            }
+        }
+    </script>
 </x-app-layout>

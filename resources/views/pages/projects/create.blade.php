@@ -19,9 +19,9 @@
                                 class="block text-sm font-medium leading-6 text-gray-900">Name</label>
                             <div class="mt-2">
                                 <div
-                                    class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                    class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 sm:max-w-md">
                                     <input type="text" name="project_name" id="project_name"
-                                        class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 ps-2 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 placeholder:ps-1"
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         placeholder="test_project">
                                 </div>
                             </div>

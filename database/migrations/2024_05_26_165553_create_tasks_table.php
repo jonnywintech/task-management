@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('description');
             $table->enum('priority', ['high', 'medium', 'normal']);
             $table->enum('status', ['created', 'in progress', 'done']);
-            $table->foreignId('user_id')->nullable();
             $table->foreignId('project_id')->nullable();
             $table->timestamps();
         });
