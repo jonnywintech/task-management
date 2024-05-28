@@ -29,7 +29,18 @@ class DatabaseSeeder extends Seeder
 
         User::factory(10)->create();
 
-        Project::factory(20)->create();
-        Task::factory(120)->create();
+        $projects =  Project::factory(20)->create();
+
+        foreach ($projects as $project) {
+            $tasks = Task::factory(rand(1,10))->create();
+            $index = 1;
+            foreach ($tasks as $task) {
+                $task->project_id = $project->id;
+                $task->position = $index;
+                $task->save();
+                $index ++;
+            }
+        }
+
     }
 }

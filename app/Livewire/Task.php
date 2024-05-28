@@ -2,29 +2,39 @@
 
 namespace App\Livewire;
 
-use App\Models\Task as ModelsTask;
+use App\Models\Project;
 use Livewire\Component;
+use App\Models\Task as ModelsTask;
 
 class Task extends Component
 {
 
-    public $project_id = '';
+    public $tasks = [];
 
+    public static $project_id;
 
-    protected $listeners = ['projectSelected'];
-    #[On('projectSelected.{project.id}')]
-    public function projectSelected($projectId)
+    public function handleClick($project_id)
     {
-        info('Project selected triggered');
-        $this->project_id = $projectId;
-        info($this->project_id);
+       $this->tasks =  ModelsTask::where('project_id', $project_id)->orderBy('position', 'asc')->get();
     }
-
+    public function updateOrder($list)
+    {
+        foreach ($list as $task){
+            ModelsTask::find($task['value'])->update(['position' => $task['order']]);
+        }
+    }
 
     public function render()
     {
-        return view('livewire.task', [
-            'tasks' => ModelsTask::where('project_id', $this->project_id)->orderBy('position', 'asc')->get()
-        ])->layout('layouts.app');
+
+        $tasks_without_project = ModelsTask::where('project_id', null)->get();
+
+         $projects = Project::all();
+
+        return view('livewire.task', ['projects' => $projects, 'tasks_without_project' => $tasks_without_project,
+            'tasks' => $this->tasks,
+        ])->layout('pages.task-assignment.index');
     }
+
+
 }

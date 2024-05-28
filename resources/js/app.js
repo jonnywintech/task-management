@@ -2,8 +2,12 @@ import './bootstrap';
 
 import Alpine from 'alpinejs';
 
-window.Alpine = Alpine;
+import Clipboard from '@ryangjchandler/alpine-clipboard'
+
+import 'livewire-sortable'
+
+Alpine.plugin(Clipboard)
+
 
 Alpine.start();
 
-window.Alpine = Alpine
