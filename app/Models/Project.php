@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Project extends Model
 {
     use HasFactory;
-    protected $guraded = [];
+    protected $guarded = [];
 
     public function tasks()
     {

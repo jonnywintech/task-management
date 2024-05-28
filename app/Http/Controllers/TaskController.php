@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -28,7 +29,16 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only('task_name', 'description');
+
+        $data['name'] = $data['task_name'];
+        unset($data['task_name']);
+
+        $data['priority'] = 'high';
+        $data['status'] = 'done';
+        Task::create($data);
+
+        return redirect()->back();
     }
 
     /**

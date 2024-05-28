@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class TaskAssignmentController extends Controller
@@ -11,7 +13,12 @@ class TaskAssignmentController extends Controller
      */
     public function index()
     {
-        return view('pages.task-assignment.index');
+        $projects = Project::all();
+
+        $tasks_without_project = Task::where('project_id', null)->get();
+
+
+        return view('pages.task-assignment.index', compact('projects', 'tasks_without_project'));
     }
 
     /**

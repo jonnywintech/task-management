@@ -26,15 +26,13 @@
 
             @auth
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex ms-0 me-auto">
-                    @if (Auth::user()->id === 1)
-                        <x-nav-link :href="route('task-assignments.index')" :active="request()->routeIs(['task-assignments/*', 'task-assignments'])">
-                            {{ __('Task Assignment') }}
-                        </x-nav-link>
-                    @endif
-                    <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects')">
+                    <x-nav-link :href="route('task-assignments.index')" :active="request()->routeIs('task-assignments.*')">
+                        {{ __('Task Assignment') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.*')">
                         {{ __('Projects') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks/*')">
+                    <x-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks.*')">
                         {{ __('Tasks') }}
                     </x-nav-link>
                 </div>
