@@ -2,12 +2,12 @@ import './bootstrap';
 
 import Alpine from 'alpinejs';
 
-import Clipboard from '@ryangjchandler/alpine-clipboard'
+// import Clipboard from '@ryangjchandler/alpine-clipboard'
 
-import 'livewire-sortable'
+// import 'livewire-sortable'
 
-Alpine.plugin(Clipboard)
+// Alpine.plugin(Clipboard)
 
 
-Alpine.start();
+// Alpine.start();
 
