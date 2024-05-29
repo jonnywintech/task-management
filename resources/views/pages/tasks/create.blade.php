@@ -15,11 +15,11 @@
 
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div class="sm:col-span-4">
-                            <label for="project_name"
+                            <label for="name"
                                 class="block text-sm font-medium leading-6 text-gray-900">Name</label>
                             <div
                                 class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 sm:max-w-md">
-                                <input type="text" name="task_name" id="task_name" required
+                                <input type="text" name="name" id="name" required minlength="3"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     placeholder="test_task">
                             </div>
@@ -28,40 +28,15 @@
                             <div class="w-56">
                                 <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">Select an
                                     option</label>
-                                <select id="countries" name="project_id"
+                                <select id="countries" name="project_id" required
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                    <option selected>Select Project</option>
+                                    <option selected disabled value="">Select Project</option>
                                     @foreach ($projects as $project)
                                         <option value="{{ $project->id }}">{{ $project->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div class="col-span-full">
-                            <div class="w-56">
-                                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">Select an
-                                    option</label>
-                                <select id="countries" required
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                    <option disabled selected value="">Choose a Task Priority</option>
-                                    <option value="normal">Normal</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="High">High</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-span-full">
-                            <label for="about"
-                                class="block text-sm font-medium leading-6 text-gray-900">Description</label>
-                            <div class="mt-2">
-                                <textarea id="about" name="about" rows="3" required
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
-                            </div>
-                            <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about task.</p>
-                        </div>
-
-
                     </div>
                 </div>
 

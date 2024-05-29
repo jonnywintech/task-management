@@ -33,13 +33,8 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only('task_name', 'description');
+        $data = $request->only('name', 'project_id');
 
-        $data['name'] = $data['task_name'];
-        unset($data['task_name']);
-
-        $data['priority'] = 'high';
-        $data['status'] = 'done';
         Task::create($data);
 
         return redirect()->back();

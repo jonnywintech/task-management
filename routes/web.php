@@ -11,12 +11,8 @@ Route::get('/', function () {
 });
 
 
-Route::middleware(['auth', 'verified'])->group(function () {
-
-
-
+Route::middleware(['auth'])->group(function () {
     Route::resource('tasks', TaskController::class);
-    Route::resource('task-assignments', TaskAssignmentController::class);
 
     Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
     Route::get('projects/create', [ProjectController::class, 'create'])->name('projects.create');
@@ -24,7 +20,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('projects/store', [ProjectController::class, 'store'])->name('projects.store');
     Route::get('projects/{id}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
     Route::get('projects/{id}/update', [ProjectController::class, 'edit'])->name('projects.update');
-    Route::delete('projects/{id}/delete', [ProjectController::class, 'delete'])->name('projects.delete');
+    Route::delete('projects/{id}/delete', [ProjectController::class, 'destroy'])->name('projects.delete');
 });
 
 Route::middleware('auth')->group(function () {

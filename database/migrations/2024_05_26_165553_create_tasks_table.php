@@ -15,11 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('position')->nullable();
-            $table->text('photos')->nullable();
-            $table->string('description')->nullable();
-            $table->enum('priority', ['high', 'medium', 'normal']);
-            $table->enum('status', ['created', 'in progress', 'done'])->default('created');
-            $table->foreignId('project_id')->nullable();
+            $table->foreignId('project_id')->onDelete('cascade');
             $table->timestamps();
         });
     }

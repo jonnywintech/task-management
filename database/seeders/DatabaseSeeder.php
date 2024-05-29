@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory(10)->create();
 
-        $projects =  Project::factory(20)->create();
+        $projects =  Project::factory(10)->create();
 
         foreach ($projects as $project) {
             $tasks = Task::factory(rand(1,10))->create();

@@ -18,15 +18,9 @@ class TaskFactory extends Factory
      */
     public function definition(): array
     {
-        $priorities = ['high', 'medium', 'normal'];
-        $statuses = ['created', 'in progress', 'done'];
 
         return [
             'name' => $this->faker->name(),
-            'photos' => $this->faker->imageUrl(),
-            'description' => $this->faker->sentence(3),
-            'priority' => $priorities[rand(0, 2)],
-            'status' => $statuses[rand(0, 2)],
             'project_id' => Project::factory(),
         ];
     }
