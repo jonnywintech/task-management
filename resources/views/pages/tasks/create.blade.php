@@ -10,8 +10,8 @@
             @csrf
             <div class="space-y-12">
                 <div class="border-b border-gray-900/10 pb-12">
-                    <h2 class="text-base font-semibold leading-7 text-gray-900">Project</h2>
-                    <p class="mt-1 text-sm leading-6 text-gray-600">Fill out nessesary data to create new project.</p>
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">Task</h2>
+                    <p class="mt-1 text-sm leading-6 text-gray-600">Fill out nessesary data to create new task.</p>
 
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div class="sm:col-span-4">
@@ -32,7 +32,11 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                     <option selected disabled value="">Select Project</option>
                                     @foreach ($projects as $project)
-                                        <option value="{{ $project->id }}">{{ $project->name }}</option>
+                                        <option value="{{ $project->id }}"
+                                            @if($project->id == $selected_project_id)
+                                            selected
+                                            @endif
+                                            >{{ $project->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

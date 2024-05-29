@@ -19,12 +19,14 @@ class TaskController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
+
+        $selected_project_id = $request->query('selected_project_id');
 
         $projects = Project::all();
 
-        return view('pages.tasks.create', compact('projects'));
+        return view('pages.tasks.create', compact('projects', 'selected_project_id'));
 
     }
 
@@ -57,7 +59,9 @@ class TaskController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $task = Task::findOrFail($id);
+
+        return view('pages.tasks.edit', compact('task'));
     }
 
     /**
@@ -65,7 +69,12 @@ class TaskController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $name = $request->only('name');
+        $task = Task::findOrFail($id);
+
+        $task->update($name);
+
+        return redirect(route('tasks.index'));
     }
 
     /**
@@ -73,6 +82,6 @@ class TaskController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
     }
 }

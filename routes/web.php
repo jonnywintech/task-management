@@ -12,7 +12,7 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('tasks', TaskController::class);
+    Route::resource('tasks', TaskController::class)->except(['show', 'destroy']);
 
    Route::resource('projects', ProjectController::class)->except('view');
 });
