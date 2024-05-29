@@ -3,6 +3,9 @@
         <h2 class="font-semibold text-xl text-dark-800 bold leading-tight">
             {{ __('Edititing Project') }}
         </h2>
+        @if (session('popup'))
+        <x-popup :popup="session('popup')" class="mb-4" />
+    @endif
     </x-slot>
     <div class="container mx-auto p-4">
 

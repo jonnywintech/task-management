@@ -66,7 +66,15 @@ class Task extends Component
     {
         $task = ModelsTask::find($task_id);
 
+        $project_id = $task->project_id;
+
         $task->delete();
+
+        $tasks = ModelsTask::where('project_id', $project_id)->orderBy('position', 'asc')->get();
+
+        foreach ($tasks as $index => $task) {
+            $task->update(['position' => $index + 1]);
+        }
 
         $this->refreshTasks();
     }
@@ -85,5 +93,4 @@ class Task extends Component
             'task_priority' => $this->task_priority,
         ])->layout('pages.task-assignment.index');
     }
-
 }

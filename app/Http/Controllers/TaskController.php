@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-  /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -27,7 +27,6 @@ class TaskController extends Controller
         $projects = Project::all();
 
         return view('pages.tasks.create', compact('projects', 'selected_project_id'));
-
     }
 
     /**
@@ -43,7 +42,7 @@ class TaskController extends Controller
 
         Task::create($data);
 
-        return redirect()->back();
+        return redirect()->back()->with('popup', 'Successfully created task');
     }
 
     /**
@@ -74,7 +73,7 @@ class TaskController extends Controller
 
         $task->update($name);
 
-        return redirect(route('tasks.index'));
+        return redirect()->route('tasks.index')->with('popup', 'Successfully updated task.');
     }
 
     /**
@@ -82,6 +81,5 @@ class TaskController extends Controller
      */
     public function destroy(string $id)
     {
-
     }
 }

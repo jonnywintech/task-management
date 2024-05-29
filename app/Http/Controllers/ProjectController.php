@@ -35,7 +35,7 @@ class ProjectController extends Controller
        $data = $request->only('name');
 
        Project::create($data);
-       return view('pages.projects.create');
+       return redirect()->route('projects.create')->with('popup', 'Successfully created project.');
     }
 
     /**
@@ -58,7 +58,7 @@ class ProjectController extends Controller
 
        $project->update($name);
 
-       return redirect(route('projects.index'));
+       return redirect()->route('projects.index')->with('popup', 'Successfully updated project.');
     }
 
     /**
