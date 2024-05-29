@@ -5,6 +5,6 @@
         </h2>
     </x-slot>
     <div class="container mx-auto px-4">
-        @livewire('task')
+        @livewire('task-assignment')
     </div>
 </x-app-layout>
