@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -13,8 +14,7 @@ class ProjectController extends Controller
     public function index()
     {
 
-        $projects = Project::all();
-
+        $projects = Project::with('tasks')->paginate(10);
         return view('pages.projects.index', compact('projects'));
     }
 
@@ -32,15 +32,10 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+       $data = $request->only('name');
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+       Project::create($data);
+       return view('pages.projects.create');
     }
 
     /**
@@ -48,7 +43,9 @@ class ProjectController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+
+        return view('pages.projects.edit', compact('project'));
     }
 
     /**
@@ -56,7 +53,12 @@ class ProjectController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+       $name = $request->only('name');
+       $project = Project::findOrFail($id);
+
+       $project->update($name);
+
+       return redirect(route('projects.index'));
     }
 
     /**

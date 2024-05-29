@@ -8,7 +8,7 @@ use App\Models\Task as ModelsTask;
 
 class Task extends Component
 {
-    public $tasks = [];
+    public $tasks;
     public $projectId;
 
     public $task_priority = [];

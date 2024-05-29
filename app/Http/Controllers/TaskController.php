@@ -35,6 +35,10 @@ class TaskController extends Controller
     {
         $data = $request->only('name', 'project_id');
 
+        $position = Task::where('project_id', $data['project_id'])->count() + 1;
+
+        $data['position'] = $position;
+
         Task::create($data);
 
         return redirect()->back();

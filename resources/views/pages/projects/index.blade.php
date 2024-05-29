@@ -21,23 +21,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($projects as $project)
+                    @foreach ($projects->items() as $project)
                         <tr class="odd:bg-white even:bg-gray-50 border-b">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                                title="{{ $project->description }}">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $project->name }}
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $project->tasks()->count() }}
                             </th>
                             <td class="px-6 py-4">
-                                <form class="inline" action="{{ route('projects.edit', ['id' => $project->id]) }}"
+                                <form class="inline" action="{{ route('projects.edit', ['project' => $project->id]) }}"
                                     method="get">
                                     @csrf
                                     <button
                                         class="font-medium bg-blue-600 rounded text-white px-4 py-2 ms-2 hover:scale-105 transition-all  cursor-pointer">Edit</button>
                                 </form>
-                                <form class="inline" action="{{ route('projects.delete', ['id' => $project->id]) }}"
+                                <form class="inline" action="{{ route('projects.destroy', ['project' => $project->id]) }}"
                                     method="post">
                                     @csrf
                                     @method('delete')
@@ -52,5 +51,8 @@
             </table>
         </div>
 
+        <div class="p-5">
+            {{ $projects->links()}}
+        </div>
     </div>
 </x-app-layout>

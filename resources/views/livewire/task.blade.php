@@ -45,8 +45,7 @@
                             <tr wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}"
                                 class="odd:bg-white even:bg-gray-50 border-b">
                                 <td wire:sortable.handle scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap max-w-56 text-wrap"
-                                    title="{{ $task->description }}">
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap max-w-56 text-wrap">
                                     {{ $task->name }}
                                 </td>
                                 <td wire:sortable.handle class="px-6 py-4">{{ $task->position }}</td>
