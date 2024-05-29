@@ -42,37 +42,25 @@
                     </thead>
                     <tbody wire:sortable="updateOrder" wire:sortable.update="updateOrder">
                         @foreach ($tasks as $task)
-                            <tr wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}"
-                                class="odd:bg-white even:bg-gray-50 border-b">
-                                <td wire:sortable.handle scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap max-w-56 text-wrap">
-                                    {{ $task->name }}
-                                </td>
-                                <td wire:sortable.handle class="px-6 py-4">{{ $task->position }}</td>
-                                <td wire:sortable.handle
-                                class="px-6 py-4
-                                @if (isset($task_priority[$task->position]['color']))
-                                    {{ $task_priority[$task->position]['color'] }} ">
-                                    {{ $task_priority[$task->position]['text'] }}
-                                </td>
-                                @else
-                                    bg-green-500 text-white capitalize">
-                                    Normal
-                                </td>
-                                @endif
-
-
+                        <tr wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}"
+                            class="odd:bg-white even:bg-gray-50 border-b">
+                            <td wire:sortable.handle scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap max-w-56 text-wrap">
+                                {{ $task->name }}
                             </td>
-                                <td wire:sortable.handle class="px-6 py-4">{{ $task->created_at }}</td>
-                                <td class="px-6 py-4" wire:sortable.handle>
-                                    <div class="flex">
-                                        <a href="{{ route('tasks.edit', ['task' => $task->id]) }}"
-                                             class="font-medium text-white ms-1 px-2 py-1 ms-2 rounded bg-blue-500 cursor-pointer ">Edit</a>
-                                        <button type="button" wire:click="destroy({{ $task->id }})"
-                                            wire:confirm="Are you sure you want to delete this task?"class="font-medium text-white bg-red-500  px-2 py-1 ms-1 rounded cursor-pointer">delete</button>
-                                    </div>
-                                </td>
-                            </tr>
+                            <td wire:sortable.handle class="px-6 py-4">{{ $task->position }}</td>
+                            <td wire:sortable.handle
+                            class="text-center text-white {{$task_priority[$task->position]['color'] ?? 'bg-green-500'}}">{{ $task_priority[$task->position]['text'] ?? 'Normal' }}</td>
+                            <td wire:sortable.handle class="px-6 py-4">{{ $task->created_at }}</td>
+                            <td class="px-6 py-4" wire:sortable.handle>
+                                <div class="flex">
+                                    <a href="{{ route('tasks.edit', ['task' => $task->id]) }}"
+                                         class="font-medium text-white ms-1 px-2 py-1 ms-2 rounded bg-blue-500 cursor-pointer ">Edit</a>
+                                    <button type="button" wire:click="destroy({{ $task->id }})"
+                                        wire:confirm="Are you sure you want to delete this task?"class="font-medium text-white bg-red-500  px-2 py-1 ms-1 rounded cursor-pointer">delete</button>
+                                </div>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>

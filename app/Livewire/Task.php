@@ -11,19 +11,19 @@ class Task extends Component
     public $tasks;
     public $projectId;
 
-    public $task_priority = [];
+    public $task_priority =[
+        1 => ['color' => 'bg-red-500',    'text' => 'High'],
+        2 => ['color' => 'bg-red-500',    'text' => 'High'],
+        3 => ['color' => 'bg-orange-600', 'text' => 'Medium'],
+        4 => ['color' => 'bg-orange-600', 'text' => 'Medium']
+    ];
+
+
 
     public function mount()
     {
         $this->projectId = '';
         $this->tasks = [];
-
-        $this->task_priority = [
-            1 => ['color' => 'bg-red-500 text-white', 'text' => 'High'],
-            2 => ['color' => 'bg-red-500 text-white', 'text' => 'High'],
-            3 => ['color' => 'bg-orange-500 text-white', 'text' => 'Medium'],
-            4 => ['color' => 'bg-orange-500 text-white', 'text' => 'Medium'],
-        ];
     }
 
     public function updatedProjectId()
@@ -44,22 +44,6 @@ class Task extends Component
         if ($this->projectId) {
             $this->tasks = ModelsTask::where('project_id', $this->projectId)->orderBy('position', 'asc')->get();
         }
-    }
-
-    public function assignProject($taskId)
-    {
-        if (is_null($this->projectId)) {
-            return;
-        }
-        $position = count($this->tasks) + 1;
-        ModelsTask::find($taskId)->update(['project_id' => $this->projectId, 'position' => $position]);
-        $this->refreshTasks();
-    }
-
-    public function unassignProject($taskId)
-    {
-        ModelsTask::find($taskId)->update(['project_id' => null, 'position' => null]);
-        $this->refreshTasks();
     }
 
     public function destroy($task_id)
