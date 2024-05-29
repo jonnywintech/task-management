@@ -14,8 +14,8 @@ class Task extends Component
     public $task_priority =[
         1 => ['color' => 'bg-red-500',    'text' => 'High'],
         2 => ['color' => 'bg-red-500',    'text' => 'High'],
-        3 => ['color' => 'bg-orange-600', 'text' => 'Medium'],
-        4 => ['color' => 'bg-orange-600', 'text' => 'Medium']
+        3 => ['color' => 'orange__bg', 'text' => 'Medium'],
+        4 => ['color' => 'orange__bg', 'text' => 'Medium']
     ];
 
 
