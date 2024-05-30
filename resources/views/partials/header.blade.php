@@ -4,7 +4,7 @@
         <!-- lg+ -->
         <nav class="flex items-center justify-between h-16 lg:h-20">
             <div class="flex-shrink-0">
-                <a href="{{ route('dashboard') }}" title="" class="flex">
+                <a href="{{ route('home.index') }}" title="" class="flex">
                     <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                 </a>
             </div>

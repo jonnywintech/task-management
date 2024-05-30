@@ -12,7 +12,7 @@
     @endif
     <div class="relative shadow-md sm:rounded-lg p-2 my-8 gap-4">
         <div class="col-span-2 flex flex-row flex-wrap gap-4">
-            <div class="col-span-1 basis-64 p-2 border-r-2">
+            <div class="col-span-1 basis-64 p-2 xl:border-r-2">
                 <div>
                     <h4 class="font-bold p-2">Projects</h4>
                     <div class="row">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-1 p-2 grow">
+            <div class="col-span-1 p-2 grow overflow-auto">
                 <h4 class="font-bold p-2">Assigned Tasks</h4>
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 cursor-default min-w-px-700">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
