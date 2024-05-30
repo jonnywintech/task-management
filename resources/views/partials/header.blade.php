@@ -102,13 +102,6 @@
                 <div class="flex flex-col px-6 -my-2 space-y-1 justify-end">
                     @auth
                         <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
-                            @if (Auth::user()->id === 1)
-                                <div class="pt-2 pb-3 space-y-1">
-                                    <x-responsive-nav-link :href="route('task-assignments.index')" :active="request()->routeIs('task-assignments/*')">
-                                        {{ __('Task-assignments') }}
-                                    </x-responsive-nav-link>
-                                </div>
-                            @endif
                             <div class="pt-2 pb-3 space-y-1">
                                 <x-responsive-nav-link :href="route('projects.index')" :active="request()->routeIs('projects/*')">
                                     {{ __('Projects') }}

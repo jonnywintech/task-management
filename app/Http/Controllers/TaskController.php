@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskCreateRequest;
+use App\Http\Requests\TaskUpdateRequest;
 use App\Models\Task;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -32,9 +34,9 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TaskCreateRequest $request)
     {
-        $data = $request->only('name', 'project_id');
+        $data = $request->validated();
 
         $position = Task::where('project_id', $data['project_id'])->count() + 1;
 
@@ -66,9 +68,10 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TaskUpdateRequest $request, string $id)
     {
-        $name = $request->only('name');
+        $name = $request->validated();
+
         $task = Task::findOrFail($id);
 
         $task->update($name);

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectCreateRequest;
+use App\Http\Requests\ProjectUpdateRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,9 +32,9 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProjectCreateRequest $request)
     {
-       $data = $request->only('name');
+       $data = $request->validated();
 
        Project::create($data);
        return redirect()->route('projects.create')->with('popup', 'Successfully created project.');
@@ -51,9 +53,9 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProjectUpdateRequest $request, string $id)
     {
-       $name = $request->only('name');
+       $name = $request->validated();
        $project = Project::findOrFail($id);
 
        $project->update($name);
@@ -69,6 +71,6 @@ class ProjectController extends Controller
         $project = Project::find($id);
         $project->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('popup', 'Successfully deleted project.');
     }
 }

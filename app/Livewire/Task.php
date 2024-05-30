@@ -11,6 +11,8 @@ class Task extends Component
     public $tasks;
     public $projectId;
 
+    public $popup_message;
+
     public $task_priority =[
         1 => ['color' => 'bg-red-500',    'text' => 'High'],
         2 => ['color' => 'bg-red-500',    'text' => 'High'],
@@ -43,6 +45,7 @@ class Task extends Component
     {
         if ($this->projectId) {
             $this->tasks = ModelsTask::where('project_id', $this->projectId)->orderBy('position', 'asc')->get();
+            $this->popup_message = [];
         }
     }
 
@@ -60,6 +63,8 @@ class Task extends Component
             $task->update(['position' => $index + 1]);
         }
 
+        session()->flash('popup', 'Task successfully deleted.');
+
         $this->refreshTasks();
     }
 
@@ -75,6 +80,6 @@ class Task extends Component
             'tasks' => $this->tasks,
             'selected_project_id' => $selected_project_id,
             'task_priority' => $this->task_priority,
-        ])->layout('pages.task-assignment.index');
+        ]);
     }
 }

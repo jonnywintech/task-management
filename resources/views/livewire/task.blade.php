@@ -7,6 +7,9 @@
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transition-all ">Create
             New Task</a>
     </div>
+    @if (session('popup'))
+            <x-popup :popup="session('popup')" class="mb-4" />
+    @endif
     <div class="relative shadow-md sm:rounded-lg p-2 my-8 gap-4">
         <div class="col-span-2 flex flex-row flex-wrap gap-4">
             <div class="col-span-1 basis-64 p-2 border-r-2">

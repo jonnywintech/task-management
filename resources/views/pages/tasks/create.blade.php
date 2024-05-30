@@ -18,14 +18,16 @@
 
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div class="sm:col-span-4">
-                            <label for="name"
-                                class="block text-sm font-medium leading-6 text-gray-900">Name</label>
+                            <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
                             <div
                                 class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 sm:max-w-md">
                                 <input type="text" name="name" id="name" required minlength="3"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     placeholder="test_task">
                             </div>
+                            @error('name')
+                                <div class="text-red-500">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-span-full">
                             <div class="w-56">
@@ -36,10 +38,8 @@
                                     <option selected disabled value="">Select Project</option>
                                     @foreach ($projects as $project)
                                         <option value="{{ $project->id }}"
-                                            @if($project->id == $selected_project_id)
-                                            selected
-                                            @endif
-                                            >{{ $project->name }}</option>
+                                            @if ($project->id == $selected_project_id) selected @endif>{{ $project->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
