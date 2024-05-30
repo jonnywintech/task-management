@@ -74,3 +74,46 @@ php artisan serve
 npm run dev
 ```
 
+## Docker
+
+copy .env file
+```bash
+cp .env.example .env
+```
+configure database server and port
+```env
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=task-managment
+DB_USERNAME=sail
+DB_PASSWORD=password
+```
+
+```bash
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php83-composer:latest \
+    composer install --ignore-platform-reqs
+```
+
+if you run into errors make sure to check if ports are available that application requires
+
+After that run 
+``` bash 
+sail up -d # or ./vendor/bin/sail up -d     # in case you didn't added terminal alias
+```
+Migrate database and seed data
+```bash
+./vendor/bin/sail php artisan migrate:fresh --seed
+```
+
+```bash
+./vendor/bin/sail npm install
+```
+
+```bash
+./vendor/bin/sail npm run dev
+```
