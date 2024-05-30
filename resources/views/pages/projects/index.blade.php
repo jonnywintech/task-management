@@ -26,13 +26,13 @@
                 <tbody>
                     @foreach ($projects->items() as $project)
                         <tr class="odd:bg-white even:bg-gray-50 border-b">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $project->name }}
-                            </th>
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            </td>
+                            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap w-60">
                                 {{ $project->tasks()->count() }}
-                            </th>
-                            <td class="px-6 py-4">
+                            </td>
+                            <td class="px-6 py-4 w-60 ">
                                 <form class="inline" action="{{ route('projects.edit', ['project' => $project->id]) }}"
                                     method="get">
                                     @csrf

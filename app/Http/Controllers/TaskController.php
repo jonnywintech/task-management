@@ -68,15 +68,17 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(TaskUpdateRequest $request, string $id)
+    public function update(TaskUpdateRequest $request,string $id)
     {
         $name = $request->validated();
 
         $task = Task::findOrFail($id);
 
+        $project_id = $task->project_id;
+
         $task->update($name);
 
-        return redirect()->route('tasks.index')->with('popup', 'Successfully updated task.');
+        return redirect()->route('tasks.index',['set_project_id'=>$project_id])->with('popup', 'Successfully updated task.');
     }
 
     /**

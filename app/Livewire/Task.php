@@ -26,6 +26,10 @@ class Task extends Component
     {
         $this->projectId = '';
         $this->tasks = [];
+        if(null != request()->query('set_project_id')){
+            $this->projectId = request()->query('set_project_id');
+            $this->refreshTasks();
+        }
     }
 
     public function updatedProjectId()
@@ -33,7 +37,7 @@ class Task extends Component
         $this->tasks = ModelsTask::where('project_id', $this->projectId)->orderBy('position', 'asc')->get();
     }
 
-    public function updateOrder($list)
+    public function updateOrder(array $list)
     {
         foreach ($list as $task) {
             ModelsTask::find($task['value'])->update(['position' => $task['order']]);

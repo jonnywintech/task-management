@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-dark-800 bold leading-tight">
-            {{ __('Edititing Project') }}
+            {{ __('Edititing Task') }}
         </h2>
         @if (session('popup'))
             <x-popup :popup="session('popup')" class="mb-4" />
@@ -9,7 +9,7 @@
     </x-slot>
     <div class="container mx-auto p-4">
 
-        <form method="POST" action="{{route('tasks.update',['task' => $task->id])}}">
+        <form method="POST" action="{{ route('tasks.update', ['task' => $task->id]) }}">
             @csrf
             @method('put')
             <div class="space-y-12">
@@ -19,14 +19,14 @@
 
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div class="sm:col-span-4">
-                            <label for="name"
-                                class="block text-sm font-medium leading-6 text-gray-900">Name</label>
+                            <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
                             <div class="mt-2">
                                 <div
                                     class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 sm:max-w-md">
-                                    <input type="text" name="name" id="name" required value="{{$task->name}}" minlength="3"
+                                    <input type="text" name="name" id="name" required
+                                        value="{{ $task->name }}" minlength="3"
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-
+                                    <input type="hidden" name="project_id" value="{{$task->project_id}}">
                                 </div>
                                 @error('name')
                                     <div class="text-red-500">{{ $message }}</div>

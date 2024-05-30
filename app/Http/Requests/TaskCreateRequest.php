@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TaskCreateRequest extends FormRequest
@@ -22,7 +23,12 @@ class TaskCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:3|string',
+            'name' => [
+                'required', 'min:3', 'string',
+                 Rule::unique('tasks')->where(function ($query) {
+                    return $query->where('project_id', $this->project_id);
+                }),
+            ],
             'project_id' => 'required',
         ];
     }
